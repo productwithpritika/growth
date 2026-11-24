@@ -1,0 +1,35 @@
+{
+  "id": "us",
+  "name": "United States",
+  "shortName": "US",
+  "currency": { "code": "USD", "locale": "en-US", "perUsd": 1, "decimals": 2 },
+  "tax": {
+    "name": "Sales tax",
+    "rate": null,
+    "display": "exclusive",
+    "note": "Prices exclude sales tax. Where it applies, tax is worked out from your billing address and shown on the invoice.",
+    "idLabel": null
+  },
+  "strongAuth": {
+    "required": false,
+    "method": "none",
+    "exemptBelow": null,
+    "title": "Confirm payment",
+    "body": "Pay {amount} to {company} with the card on file.",
+    "approve": "Pay",
+    "cancel": "Cancel",
+    "rule": "No extra step by default; the card issuer can still ask for one on a risky payment."
+  },
+  "recurring": {
+    "consentRequired": true,
+    "title": "Agree to automatic top-ups",
+    "body": "{company} will charge your card {amount} each time your balance drops below the threshold you set, up to your monthly cap. Turn this off at any time in Top-ups.",
+    "checkbox": "I agree to automatic charges on these terms.",
+    "maxPerCharge": null,
+    "preDebitNoticeHours": null
+  },
+  "autoRenewal": {
+    "title": "Your plan renews automatically",
+    "body": "{plan} renews every month on {date} at {price} plus any applicable tax until you cancel. Cancel any time in Plan; you keep access until the end of the paid period. We'll email you before any price change."
+  }
+}

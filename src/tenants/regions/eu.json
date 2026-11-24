@@ -1,0 +1,35 @@
+{
+  "id": "eu",
+  "name": "European Union",
+  "shortName": "EU",
+  "currency": { "code": "EUR", "locale": "en-IE", "perUsd": 0.92, "decimals": 2 },
+  "tax": {
+    "name": "VAT",
+    "rate": 0.2,
+    "display": "inclusive",
+    "note": "Prices include VAT at 20%. Add a VAT ID in Billing to be invoiced under the reverse charge instead.",
+    "idLabel": "VAT ID"
+  },
+  "strongAuth": {
+    "required": true,
+    "method": "3ds",
+    "exemptBelow": 30,
+    "title": "Approve the payment with your bank",
+    "body": "Your bank asks you to approve this payment of {amount} to {company} in its app (3-D Secure). No card details are entered here.",
+    "approve": "Approve in banking app",
+    "cancel": "Cancel payment",
+    "rule": "Strong customer authentication (PSD2) on card payments of €30 or more. Later automatic charges are merchant-initiated and exempt."
+  },
+  "recurring": {
+    "consentRequired": true,
+    "title": "Authorise automatic top-ups",
+    "body": "You authorise {company} to charge your card {amount} without asking each time, whenever your balance drops below your threshold, up to your monthly cap. You approve the first charge with your bank; later ones are merchant-initiated. Withdraw this at any time in Top-ups.",
+    "checkbox": "I authorise these merchant-initiated charges.",
+    "maxPerCharge": null,
+    "preDebitNoticeHours": null
+  },
+  "autoRenewal": {
+    "title": "Your plan renews automatically",
+    "body": "{plan} renews every month on {date} at {price} including VAT until you cancel. Cancel any time in Plan, effective at the end of the period. We'll tell you at least 30 days before any price change."
+  }
+}

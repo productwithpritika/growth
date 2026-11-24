@@ -1,0 +1,778 @@
+{
+  "id": "seatco",
+  "company": "SeatCo",
+  "category": "Team workspace: per-seat plans with a shared AI credit pool",
+  "billingModel": "subscription",
+  "workUnit": {
+    "one": "AI task",
+    "many": "AI tasks"
+  },
+  "brand": {
+    "wordmark": "SeatCo",
+    "glyph": "S",
+    "accent": {
+      "light": "oklch(0.47 0.12 285)",
+      "dark": "oklch(0.74 0.11 285)",
+      "foregroundLight": "oklch(0.99 0 0)",
+      "foregroundDark": "oklch(0.15 0.01 285)"
+    }
+  },
+  "meters": [
+    {
+      "id": "credits",
+      "label": "AI credits",
+      "unit": "credits",
+      "pricePerUnit": 0.02,
+      "valueType": "credits",
+      "decimals": 0,
+      "hint": "One shared pool: every seat adds credits to it and every teammate draws from it."
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "price": 0,
+      "paid": false,
+      "included": {
+        "credits": 150
+      },
+      "meterPrice": {
+        "credits": 0
+      },
+      "caps": {
+        "projects": 3
+      },
+      "features": [],
+      "highlights": [
+        "1 seat",
+        "150 AI credits a month"
+      ]
+    },
+    {
+      "id": "starter",
+      "name": "Starter",
+      "price": 48,
+      "paid": true,
+      "proposed": true,
+      "included": {
+        "credits": 1200
+      },
+      "meterPrice": {
+        "credits": 48
+      },
+      "caps": {
+        "projects": 10
+      },
+      "features": [
+        "private"
+      ],
+      "highlights": [
+        "$6 per seat · priced here for 8 seats",
+        "150 AI credits per seat, pooled (1,200 for 8 seats)",
+        "Private projects"
+      ]
+    },
+    {
+      "id": "pro",
+      "name": "Team",
+      "price": 96,
+      "paid": true,
+      "included": {
+        "credits": 3200
+      },
+      "meterPrice": {
+        "credits": 96
+      },
+      "caps": {
+        "projects": 50
+      },
+      "features": [
+        "private",
+        "domains"
+      ],
+      "highlights": [
+        "$12 per seat · priced here for 8 seats",
+        "400 AI credits per seat, pooled (3,200 for 8 seats)",
+        "Custom domains"
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "price": 192,
+      "paid": true,
+      "included": {
+        "credits": 7200
+      },
+      "meterPrice": {
+        "credits": 192
+      },
+      "caps": {},
+      "features": [
+        "private",
+        "domains",
+        "sso"
+      ],
+      "highlights": [
+        "$24 per seat · priced here for 8 seats",
+        "900 AI credits per seat, pooled (7,200 for 8 seats)",
+        "SSO"
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "price": null,
+      "paid": true,
+      "included": {
+        "credits": 40000
+      },
+      "caps": {},
+      "features": [
+        "private",
+        "domains",
+        "sso"
+      ],
+      "highlights": [
+        "Seats on contract",
+        "Pooled credits across teams",
+        "Audit logs"
+      ]
+    }
+  ],
+  "grantRules": [
+    {
+      "plan": "free",
+      "meter": "credits",
+      "cadence": "monthly",
+      "rollover": {
+        "mode": "none"
+      }
+    },
+    {
+      "plan": "starter",
+      "meter": "credits",
+      "cadence": "monthly",
+      "rollover": {
+        "mode": "none"
+      }
+    },
+    {
+      "plan": "pro",
+      "meter": "credits",
+      "cadence": "monthly",
+      "rollover": {
+        "mode": "capped",
+        "capX": 1
+      },
+      "expiryDays": 90
+    },
+    {
+      "plan": "*",
+      "meter": "credits",
+      "cadence": "monthly",
+      "rollover": {
+        "mode": "full"
+      }
+    }
+  ],
+  "topUpPacks": [
+    {
+      "id": "pool-1000",
+      "meter": "credits",
+      "units": 1000,
+      "price": 18,
+      "validityDays": 365
+    },
+    {
+      "id": "pool-5000",
+      "meter": "credits",
+      "units": 5000,
+      "price": 80,
+      "validityDays": 365
+    },
+    {
+      "id": "pool-20000",
+      "meter": "credits",
+      "units": 20000,
+      "price": 300,
+      "validityDays": 365
+    }
+  ],
+  "autoTopUp": {
+    "threshold": 500,
+    "amount": 1000,
+    "monthlySpendLimit": 120
+  },
+  "limits": {
+    "spend": {
+      "selfSetCap": true,
+      "tierCaps": false
+    },
+    "rate": {
+      "runsPerMinute": 20,
+      "agentRunsPerHour": 60
+    }
+  },
+  "byokDiscount": null,
+  "expansion": "plan-only",
+  "rewards": [
+    {
+      "id": "share",
+      "label": "Share a workspace template",
+      "amount": 200,
+      "meter": "credits",
+      "expiryDays": 30
+    },
+    {
+      "id": "invite",
+      "label": "Invite a teammate who finishes a task",
+      "amount": 300,
+      "meter": "credits",
+      "expiryDays": 60,
+      "pending": "Kai joined on 19 Nov and has not finished a task yet"
+    }
+  ],
+  "models": [
+    {
+      "id": "atlas-l",
+      "name": "Atlas Large",
+      "provider": "SeatCo AI",
+      "providerCostPerRun": 0.04,
+      "default": true
+    },
+    {
+      "id": "atlas-s",
+      "name": "Atlas Small",
+      "provider": "SeatCo AI",
+      "providerCostPerRun": 0.012,
+      "default": false
+    },
+    {
+      "id": "atlas-m",
+      "name": "Atlas Medium",
+      "provider": "SeatCo AI",
+      "providerCostPerRun": 0.025,
+      "default": false
+    }
+  ],
+  "regions": [
+    {
+      "id": "us",
+      "name": "United States",
+      "residency": "US hosting"
+    },
+    {
+      "id": "eu",
+      "name": "European Union",
+      "residency": "EU hosting on Business"
+    }
+  ],
+  "compliance": {
+    "SOC 2 Type II": true,
+    "GDPR": true,
+    "HIPAA": false
+  },
+  "copy": {
+    "hub.title": "Credit pool",
+    "limits.topUpCap": "Monthly top-up cap (USD)",
+    "topups.title": "Add to the pool",
+    "tables.rowLabel": "Project",
+    "tables.addColumn": "Add a build step"
+  },
+  "rateCard": [
+    {
+      "id": "edit",
+      "label": "Quick edit",
+      "costs": {
+        "credits": 0.5
+      },
+      "providerCost": 0.04,
+      "model": "atlas-s"
+    },
+    {
+      "id": "feature",
+      "label": "Feature build",
+      "costs": {
+        "credits": 1.2
+      },
+      "providerCost": 0.11,
+      "model": "atlas-l"
+    },
+    {
+      "id": "scaffold",
+      "label": "Full-stack scaffold",
+      "costs": {
+        "credits": 2
+      },
+      "providerCost": 0.2,
+      "model": "atlas-l"
+    },
+    {
+      "id": "fixloop",
+      "label": "Agent fix loop",
+      "costs": {
+        "credits": 3
+      },
+      "providerCost": 0.32,
+      "model": "atlas-l"
+    },
+    {
+      "id": "deploy",
+      "label": "Deploy",
+      "costs": {
+        "credits": 0
+      },
+      "providerCost": 0
+    }
+  ],
+  "actionCost": 0,
+  "saves": [
+    {
+      "id": "dunning",
+      "label": "Smart Dunning retry",
+      "detail": "Retry on payday and send a one-tap card update link"
+    },
+    {
+      "id": "pause",
+      "label": "Pause one cycle",
+      "detail": "Billing stops; projects stay online"
+    },
+    {
+      "id": "bonus",
+      "label": "Rollover bonus",
+      "detail": "Add 20% of the monthly credits on renewal"
+    },
+    {
+      "id": "downgrade",
+      "label": "Move to best-fit plan",
+      "detail": "Drop to the cheapest plan that still covers usage"
+    }
+  ],
+  "rules": {
+    "hotPct": 80,
+    "idlePct": 30,
+    "byokHeavyPct": 50,
+    "mcpHeavyPct": 50,
+    "usageDropPct": 50,
+    "alertPcts": [
+      50,
+      80,
+      100
+    ],
+    "expiringSoonDays": 14
+  },
+  "agents": {
+    "mcpOnFree": false,
+    "seatCap": 100,
+    "approvalOver": 20,
+    "premiumDataInAgents": true,
+    "byokFee": 0
+  },
+  "demo": {
+    "hub": {
+      "maya": {
+        "planId": "free",
+        "role": "Hobby builder",
+        "blurb": "Builds a side-project app most evenings",
+        "seats": 1,
+        "carryIn": {},
+        "expiredAtStart": {
+          "credits": 4
+        },
+        "card": {
+          "brand": "Visa",
+          "last4": "3318",
+          "expires": "08/28",
+          "status": "ok"
+        },
+        "autoTopUp": {
+          "enabled": false,
+          "meter": "credits",
+          "threshold": 2,
+          "units": 10
+        },
+        "topUpCap": 15,
+        "workflows": [
+          {
+            "id": "evenings",
+            "name": "Evening build sessions",
+            "owner": "Maya",
+            "every": "weekday",
+            "units": 3,
+            "steps": [
+              "feature"
+            ],
+            "channel": "Table"
+          }
+        ],
+        "table": {
+          "name": "Portfolio site rebuild",
+          "rows": 40,
+          "source": "Prompt"
+        },
+        "domain": "mayabuilds.co"
+      },
+      "dev": {
+        "planId": "business",
+        "role": "Workspace owner",
+        "blurb": "Owns an eight-seat team sharing one credit pool",
+        "seats": 8,
+        "carryIn": {
+          "credits": 1200
+        },
+        "expiredAtStart": {},
+        "card": {
+          "brand": "Mastercard",
+          "last4": "7720",
+          "expires": "02/29",
+          "status": "ok"
+        },
+        "autoTopUp": {
+          "enabled": true,
+          "meter": "credits",
+          "threshold": 500,
+          "units": 1000
+        },
+        "topUpCap": 120,
+        "inFlight": "agent-fixes",
+        "workflows": [
+          {
+            "id": "squad",
+            "name": "Ops dashboards sprint",
+            "owner": "Internal tools squad",
+            "every": "weekday",
+            "units": 72,
+            "steps": [
+              "feature"
+            ],
+            "channel": "Table"
+          },
+          {
+            "id": "agent-fixes",
+            "name": "Nightly agent fix loop",
+            "owner": "CI agent",
+            "every": "day",
+            "units": 18,
+            "steps": [
+              "fixloop"
+            ],
+            "channel": "Agent"
+          },
+          {
+            "id": "mcp-builds",
+            "name": "Tasks from an AI client",
+            "owner": "Whole team",
+            "every": "weekday",
+            "units": 24,
+            "steps": [
+              "edit"
+            ],
+            "channel": "MCP"
+          }
+        ],
+        "team": [
+          {
+            "id": "dev",
+            "name": "Dev",
+            "title": "Platform lead",
+            "role": "admin"
+          },
+          {
+            "id": "sofia",
+            "name": "Sofia",
+            "title": "Finance ops",
+            "role": "billing"
+          },
+          {
+            "id": "kai",
+            "name": "Kai",
+            "title": "Frontend engineer",
+            "role": "member",
+            "persona": true
+          },
+          {
+            "id": "lena",
+            "name": "Lena",
+            "title": "Designer",
+            "role": "member"
+          }
+        ],
+        "table": {
+          "name": "Nightly regression batch",
+          "rows": 400,
+          "source": "CI queue"
+        },
+        "domain": "harbourline.example"
+      }
+    },
+    "merchantRoles": {
+      "nia": "Growth PM · SeatCo",
+      "sam": "Finance lead · SeatCo"
+    },
+    "population": {
+      "size": 300,
+      "seed": 4242,
+      "cogsPerUnit": 0.092,
+      "unitsPerPrimary": 0.85,
+      "profiles": {
+        "free": {
+          "share": 0.72,
+          "median": 1,
+          "spread": 0.7,
+          "base": 30
+        },
+        "pro": {
+          "share": 0.2,
+          "median": 0.75,
+          "spread": 0.6
+        },
+        "business": {
+          "share": 0.08,
+          "median": 0.8,
+          "spread": 0.5,
+          "needs": {
+            "sso": 0.6
+          }
+        }
+      },
+      "names": [
+        [
+          "Pixel",
+          "Fern",
+          "Bolt",
+          "Sprout",
+          "Mosaic",
+          "Ember",
+          "Cobalt",
+          "Willow",
+          "Prism",
+          "Tidal",
+          "Lark",
+          "Nimbus",
+          "Ivory",
+          "Oak",
+          "Comet"
+        ],
+        [
+          "Apps",
+          "Studio",
+          "Works",
+          "Labs",
+          "Tools",
+          "Digital",
+          "Ventures",
+          "Software",
+          "Collective",
+          "Systems",
+          "Co",
+          "Devs",
+          "Craft",
+          "Build",
+          "Forge",
+          "Hub",
+          "Kit",
+          "Stack",
+          "Garage",
+          "Foundry"
+        ]
+      ]
+    },
+    "sim": {
+      "workspaces": 2000,
+      "days": 90,
+      "seed": 4242,
+      "enrichments": [
+        {
+          "id": "quick-edit",
+          "label": "Quick edit",
+          "step": "edit",
+          "share": 0.45,
+          "rowsMedian": 6,
+          "outcomes": {
+            "shipped": 0.8,
+            "reverted": 0.13,
+            "errored": 0.07
+          }
+        },
+        {
+          "id": "feature-build",
+          "label": "Feature build",
+          "step": "feature",
+          "share": 0.3,
+          "rowsMedian": 4,
+          "outcomes": {
+            "shipped": 0.72,
+            "reverted": 0.18,
+            "errored": 0.1
+          },
+          "models": [
+            "atlas-l",
+            "atlas-m",
+            "atlas-s"
+          ]
+        },
+        {
+          "id": "scaffold",
+          "label": "Full-stack scaffold",
+          "step": "scaffold",
+          "share": 0.1,
+          "rowsMedian": 2,
+          "outcomes": {
+            "shipped": 0.66,
+            "reverted": 0.2,
+            "errored": 0.14
+          },
+          "models": [
+            "atlas-l",
+            "atlas-m",
+            "atlas-s"
+          ]
+        },
+        {
+          "id": "fix-loop",
+          "label": "Agent fix loop",
+          "step": "fixloop",
+          "share": 0.15,
+          "rowsMedian": 3,
+          "outcomes": {
+            "shipped": 0.58,
+            "reverted": 0.17,
+            "errored": 0.25
+          },
+          "models": [
+            "atlas-l",
+            "atlas-m",
+            "atlas-s"
+          ]
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "shipped",
+          "label": "Shipped",
+          "charged": true
+        },
+        {
+          "id": "reverted",
+          "label": "Reverted",
+          "charged": true
+        },
+        {
+          "id": "errored",
+          "label": "Errored",
+          "charged": false
+        }
+      ],
+      "behaviours": {
+        "churnAfter3Months": 0.22,
+        "addTopUps": 0.3,
+        "switchModels": 0.12,
+        "stayOnDefault": 0.74,
+        "freeGoQuiet": 0.5,
+        "freeNeverRun": 0.18
+      },
+      "regions": {
+        "us": 0.5,
+        "eu": 0.32,
+        "in": 0.18
+      },
+      "sources": {
+        "organic": 0.44,
+        "paid-search": 0.14,
+        "referral": 0.22,
+        "partner": 0.06,
+        "outbound": 0.14
+      }
+    },
+    "experiments": [
+      {
+        "id": "exp-micro",
+        "name": "10-credit packs on Free",
+        "hypothesis": "If Free builders who hit the monthly cap can buy a $3.50 pack, more of them pay within 14 days than with an upgrade wall.",
+        "cohort": "free-capped",
+        "metric": "Paid within 14 days",
+        "status": "running",
+        "owner": "Nia",
+        "startedDaysAgo": 8,
+        "arms": [
+          {
+            "name": "Control · upgrade wall",
+            "exposed": 1210,
+            "converted": 41
+          },
+          {
+            "name": "$3.50 credit packs",
+            "exposed": 1188,
+            "converted": 63
+          }
+        ]
+      },
+      {
+        "id": "exp-rollover",
+        "name": "Full rollover on Pro",
+        "hypothesis": "Letting Pro credits roll over in full keeps light-month builders subscribed.",
+        "cohort": "paid-idle",
+        "metric": "Renewed next cycle",
+        "status": "draft",
+        "owner": "Sam",
+        "arms": []
+      }
+    ]
+  },
+  "hub": {
+    "thresholds": [
+      75,
+      90,
+      100
+    ],
+    "spark": {
+      "amount": 2,
+      "minRows": 3,
+      "monthlyCap": 20,
+      "expiryDays": 7,
+      "label": "Daily build bonus"
+    },
+    "activation": {
+      "amount": 10,
+      "minRows": 3
+    },
+    "starterPack": {
+      "units": 20,
+      "price": 6,
+      "validityDays": 30
+    },
+    "paidTrial": null,
+    "dunning": {
+      "graceDays": 5,
+      "retryDays": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "preExpiryDays": 30
+    },
+    "pausePolicy": "freeze",
+    "annualDiscountPct": 15,
+    "expansion": {
+      "credits": {
+        "step": 50,
+        "price": 18,
+        "max": 8
+      }
+    },
+    "benchmark": null,
+    "coupons": [
+      {
+        "code": "SHIP15",
+        "label": "15% off for 2 months",
+        "pctOff": 15,
+        "months": 2
+      }
+    ],
+    "templateTable": "Starter project with a sample landing page"
+  },
+  "archetype": "seat-plus-usage"
+}

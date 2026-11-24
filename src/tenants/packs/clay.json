@@ -1,0 +1,1007 @@
+{
+  "id": "clay",
+  "company": "Clay",
+  "category": "GTM data and AI enrichment",
+  "billingModel": "subscription",
+  "archetype": "hybrid-credits",
+  "workUnit": {
+    "one": "row",
+    "many": "rows"
+  },
+  "brand": {
+    "wordmark": "Clay",
+    "glyph": "C",
+    "accent": {
+      "light": "oklch(0.45 0.14 285)",
+      "dark": "oklch(0.72 0.12 285)",
+      "foregroundLight": "oklch(0.99 0 0)",
+      "foregroundDark": "oklch(0.15 0.01 285)"
+    }
+  },
+  "meters": [
+    {
+      "id": "dc",
+      "label": "Data Credits",
+      "unit": "credits",
+      "pricePerUnit": 0.05,
+      "valueType": "credits",
+      "decimals": 1,
+      "hint": "Data and AI bought from the provider marketplace. Misses are free."
+    },
+    {
+      "id": "act",
+      "label": "Actions",
+      "unit": "actions",
+      "pricePerUnit": 0.004,
+      "valueType": "actions",
+      "decimals": 0,
+      "hint": "Every enrichment step, AI call, CRM push, HTTP call or export."
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "price": 0,
+      "paid": false,
+      "included": {
+        "dc": 100,
+        "act": 500
+      },
+      "meterPrice": {
+        "dc": 0,
+        "act": 0
+      },
+      "caps": {
+        "rowsPerTable": 200
+      },
+      "features": [],
+      "highlights": [
+        "200 rows per table",
+        "Waterfalls and Claygent",
+        "Own API keys"
+      ]
+    },
+    {
+      "id": "solo",
+      "name": "Solo",
+      "price": 89,
+      "paid": true,
+      "proposed": true,
+      "included": {
+        "dc": 1200,
+        "act": 5000
+      },
+      "meterPrice": {
+        "dc": 60,
+        "act": 29
+      },
+      "caps": {
+        "rowsPerTable": 5000,
+        "seats": 1
+      },
+      "features": [],
+      "highlights": [
+        "One builder",
+        "5,000 rows per table",
+        "No phone data"
+      ]
+    },
+    {
+      "id": "launch",
+      "name": "Launch",
+      "price": 185,
+      "paid": true,
+      "included": {
+        "dc": 2500,
+        "act": 15000
+      },
+      "meterPrice": {
+        "dc": 125,
+        "act": 60
+      },
+      "caps": {
+        "rowsPerTable": 50000
+      },
+      "features": [
+        "phone"
+      ],
+      "highlights": [
+        "Phone data, signals, Sequencer",
+        "50,000 rows per table"
+      ]
+    },
+    {
+      "id": "growth",
+      "name": "Growth",
+      "price": 495,
+      "paid": true,
+      "included": {
+        "dc": 6000,
+        "act": 40000
+      },
+      "meterPrice": {
+        "dc": 290,
+        "act": 205
+      },
+      "caps": {},
+      "features": [
+        "phone",
+        "crm"
+      ],
+      "highlights": [
+        "CRM auto-sync",
+        "HTTP API",
+        "Web intent and ad audiences"
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "price": null,
+      "paid": true,
+      "included": {
+        "dc": 100000,
+        "act": 150000
+      },
+      "caps": {},
+      "features": [
+        "phone",
+        "crm"
+      ],
+      "highlights": [
+        "SSO and SCIM",
+        "Warehouse sync",
+        "Growth Strategist"
+      ]
+    }
+  ],
+  "grantRules": [
+    {
+      "plan": "free",
+      "meter": "dc",
+      "cadence": "monthly",
+      "rollover": {
+        "mode": "none"
+      }
+    },
+    {
+      "plan": "free",
+      "meter": "act",
+      "cadence": "monthly",
+      "rollover": {
+        "mode": "none"
+      }
+    },
+    {
+      "plan": "*",
+      "meter": "dc",
+      "cadence": "monthly",
+      "rollover": {
+        "mode": "capped",
+        "capX": 2
+      }
+    },
+    {
+      "plan": "*",
+      "meter": "act",
+      "cadence": "monthly",
+      "rollover": {
+        "mode": "none"
+      }
+    }
+  ],
+  "topUpPacks": [
+    {
+      "id": "dc-100",
+      "meter": "dc",
+      "units": 100,
+      "price": 7.0,
+      "validityDays": 180
+    },
+    {
+      "id": "dc-500",
+      "meter": "dc",
+      "units": 500,
+      "price": 33.5,
+      "validityDays": 180
+    },
+    {
+      "id": "dc-1500",
+      "meter": "dc",
+      "units": 1500,
+      "price": 97.5,
+      "validityDays": 180
+    },
+    {
+      "id": "dc-5000",
+      "meter": "dc",
+      "units": 5000,
+      "price": 300,
+      "validityDays": 180
+    },
+    {
+      "id": "act-1000",
+      "meter": "act",
+      "units": 1000,
+      "price": 5.2,
+      "proposed": true,
+      "validityDays": 180
+    },
+    {
+      "id": "act-5000",
+      "meter": "act",
+      "units": 5000,
+      "price": 24,
+      "proposed": true,
+      "validityDays": 180
+    },
+    {
+      "id": "act-10000",
+      "meter": "act",
+      "units": 10000,
+      "price": 45,
+      "proposed": true,
+      "validityDays": 180
+    }
+  ],
+  "autoTopUp": {
+    "threshold": 500,
+    "amount": 1500,
+    "monthlySpendLimit": 150
+  },
+  "limits": {
+    "spend": {
+      "selfSetCap": true,
+      "tierCaps": false
+    },
+    "rate": {
+      "runsPerMinute": 60,
+      "agentRunsPerHour": 120
+    }
+  },
+  "byokDiscount": {
+    "meter": "dc",
+    "pct": 100
+  },
+  "expansion": "independent",
+  "rewards": [
+    {
+      "id": "course",
+      "label": "Finish Clay 101",
+      "amount": 25,
+      "meter": "dc",
+      "expiryDays": 30
+    },
+    {
+      "id": "template",
+      "label": "Publish a table template",
+      "amount": 40,
+      "meter": "dc",
+      "expiryDays": 30
+    },
+    {
+      "id": "referral",
+      "label": "Refer a teammate who runs a table",
+      "amount": 50,
+      "meter": "dc",
+      "expiryDays": 60,
+      "pending": "Leo signed up on 18 Nov and has not run a table yet"
+    }
+  ],
+  "models": [
+    {
+      "id": "helium",
+      "name": "Clay Helium",
+      "provider": "Clay",
+      "providerCostPerRun": 0.012,
+      "default": true
+    },
+    {
+      "id": "argon",
+      "name": "Clay Argon web research",
+      "provider": "Clay",
+      "providerCostPerRun": 0.06,
+      "default": false
+    },
+    {
+      "id": "navigator",
+      "name": "Claygent Navigator",
+      "provider": "Clay",
+      "providerCostPerRun": 0.14,
+      "default": false
+    },
+    {
+      "id": "own-key",
+      "name": "Any model on your own key",
+      "provider": "Customer",
+      "providerCostPerRun": 0,
+      "default": false
+    }
+  ],
+  "regions": [
+    {
+      "id": "us",
+      "name": "United States",
+      "residency": "US data centres"
+    },
+    {
+      "id": "eu",
+      "name": "European Union",
+      "residency": "EU residency on Enterprise"
+    }
+  ],
+  "compliance": {
+    "SOC 2 Type II": true,
+    "GDPR": true,
+    "CCPA": true,
+    "HIPAA": false
+  },
+  "copy": {
+    "hub.title": "Credits Hub",
+    "limits.topUpCap": "Monthly top-up cap (USD)",
+    "topups.title": "Top-up packs"
+  },
+  "rateCard": [
+    {
+      "id": "company",
+      "label": "Company enrichment",
+      "costs": {
+        "dc": 1,
+        "act": 1
+      },
+      "hitRate": 0.82,
+      "chargeOnHit": true,
+      "providerCost": 0.008,
+      "provider": "Northwind Data"
+    },
+    {
+      "id": "li",
+      "label": "LinkedIn profile",
+      "costs": {
+        "dc": 0.5,
+        "act": 1
+      },
+      "hitRate": 0.88,
+      "chargeOnHit": true,
+      "providerCost": 0.011,
+      "provider": "ProfileGraph"
+    },
+    {
+      "id": "email",
+      "label": "Work email",
+      "costs": {
+        "dc": 0.5,
+        "act": 1
+      },
+      "hitRate": 0.62,
+      "chargeOnHit": true,
+      "providerCost": 0.009,
+      "provider": "Mailwise waterfall",
+      "verifiedShare": 0.76
+    },
+    {
+      "id": "helium",
+      "label": "AI prompt · Clay Helium",
+      "costs": {
+        "dc": 1,
+        "act": 1
+      },
+      "providerCost": 0.012,
+      "model": "helium",
+      "provider": "Clay"
+    },
+    {
+      "id": "argon",
+      "label": "Web research · Argon",
+      "costs": {
+        "dc": 3,
+        "act": 1
+      },
+      "providerCost": 0.06,
+      "model": "argon",
+      "provider": "Clay"
+    },
+    {
+      "id": "phone",
+      "label": "Mobile phone",
+      "costs": {
+        "dc": 4,
+        "act": 1
+      },
+      "hitRate": 0.41,
+      "chargeOnHit": true,
+      "providerCost": 0.13,
+      "requires": "phone",
+      "provider": "Dialpoint"
+    },
+    {
+      "id": "navigator",
+      "label": "Claygent Navigator",
+      "costs": {
+        "dc": 6,
+        "act": 1
+      },
+      "providerCost": 0.14,
+      "model": "navigator",
+      "provider": "Clay"
+    },
+    {
+      "id": "crm",
+      "label": "CRM auto-sync",
+      "costs": {
+        "dc": 0,
+        "act": 1
+      },
+      "providerCost": 0,
+      "requires": "crm",
+      "provider": "Clay"
+    },
+    {
+      "id": "byok-email",
+      "label": "Work email · own API key",
+      "costs": {
+        "dc": 0,
+        "act": 1
+      },
+      "hitRate": 0.62,
+      "chargeOnHit": true,
+      "providerCost": 0,
+      "byok": true,
+      "model": "own-key",
+      "provider": "Your own key",
+      "verifiedShare": 0.76,
+      "byokFor": "email"
+    }
+  ],
+  "actionCost": 0.0007,
+  "saves": [
+    {
+      "id": "dunning",
+      "label": "Smart Dunning retry",
+      "detail": "Retry on payday and send a one-tap card update link"
+    },
+    {
+      "id": "pause",
+      "label": "Pause one cycle",
+      "detail": "Billing stops; unused credits roll over"
+    },
+    {
+      "id": "bonus",
+      "label": "Rollover bonus",
+      "detail": "Add 20% of the monthly Data Credits on renewal"
+    },
+    {
+      "id": "downgrade",
+      "label": "Move to best-fit plan",
+      "detail": "Drop to the cheapest plan that still covers usage"
+    }
+  ],
+  "rules": {
+    "hotPct": 80,
+    "idlePct": 30,
+    "byokHeavyPct": 50,
+    "mcpHeavyPct": 50,
+    "usageDropPct": 50,
+    "alertPcts": [
+      50,
+      80,
+      100
+    ],
+    "expiringSoonDays": 14
+  },
+  "agents": {
+    "mcpOnFree": true,
+    "seatCap": 500,
+    "approvalOver": 250,
+    "premiumDataInAgents": false,
+    "byokFee": 0
+  },
+  "demo": {
+    "hub": {
+      "maya": {
+        "planId": "free",
+        "role": "Freelance SDR",
+        "blurb": "Enriches 150 rows every Monday",
+        "seats": 1,
+        "carryIn": {},
+        "expiredAtStart": {
+          "act": 189
+        },
+        "card": {
+          "brand": "Visa",
+          "last4": "3318",
+          "expires": "08/28",
+          "status": "ok"
+        },
+        "autoTopUp": {
+          "enabled": false,
+          "meter": "dc",
+          "threshold": 20,
+          "units": 100
+        },
+        "topUpCap": 20,
+        "workflows": [
+          {
+            "id": "weekly-list",
+            "name": "Weekly prospect list",
+            "owner": "Maya",
+            "every": "week",
+            "offset": 1,
+            "units": 150,
+            "steps": [
+              "email"
+            ],
+            "channel": "Table"
+          }
+        ],
+        "table": {
+          "name": "Weekly prospect list",
+          "rows": 150,
+          "source": "CSV import"
+        },
+        "domain": "northfield-sdr.com"
+      },
+      "dev": {
+        "planId": "growth",
+        "role": "RevOps lead",
+        "blurb": "Billing admin who hates surprise bills",
+        "seats": 12,
+        "carryIn": {
+          "dc": 1100
+        },
+        "expiredAtStart": {
+          "act": 27400
+        },
+        "card": {
+          "brand": "Amex",
+          "last4": "1009",
+          "expires": "10/26",
+          "status": "expired"
+        },
+        "autoTopUp": {
+          "enabled": true,
+          "meter": "dc",
+          "threshold": 1000,
+          "units": 1500,
+          "atCap": "ask",
+          "onFail": "backup"
+        },
+        "topUpCap": 150,
+        "inFlight": "abm",
+        "workflows": [
+          {
+            "id": "inbound",
+            "name": "Inbound lead enrichment",
+            "owner": "Ana · SDR lead",
+            "every": "weekday",
+            "units": 120,
+            "steps": [
+              "li",
+              "email",
+              "helium",
+              "crm"
+            ],
+            "channel": "Table"
+          },
+          {
+            "id": "abm",
+            "name": "ABM account research",
+            "owner": "Marcus · AE",
+            "every": "week",
+            "offset": 0,
+            "units": 80,
+            "steps": [
+              "argon",
+              "navigator"
+            ],
+            "channel": "Agent"
+          },
+          {
+            "id": "phones",
+            "name": "Mobile numbers for call blocks",
+            "owner": "Priya · AE",
+            "every": "week",
+            "offset": 3,
+            "units": 60,
+            "steps": [
+              "phone"
+            ],
+            "channel": "Table"
+          },
+          {
+            "id": "mcp",
+            "name": "Lookups from ChatGPT",
+            "owner": "Whole team",
+            "every": "weekday",
+            "units": 25,
+            "steps": [
+              "li",
+              "email"
+            ],
+            "channel": "MCP"
+          }
+        ],
+        "table": {
+          "name": "India SaaS · 25–100 employees",
+          "rows": 4200,
+          "source": "Company search"
+        },
+        "domain": "brightline.io",
+        "backupCard": {
+          "brand": "Visa",
+          "last4": "7781",
+          "expires": "12/27",
+          "status": "ok"
+        },
+        "team": [
+          {
+            "id": "dev",
+            "name": "Dev",
+            "title": "RevOps lead",
+            "role": "admin"
+          },
+          {
+            "id": "jordan",
+            "name": "Jordan",
+            "title": "Finance",
+            "role": "billing"
+          },
+          {
+            "id": "ana",
+            "name": "Ana",
+            "title": "SDR lead",
+            "role": "member"
+          },
+          {
+            "id": "marcus",
+            "name": "Marcus",
+            "title": "AE",
+            "role": "member"
+          },
+          {
+            "id": "priya",
+            "name": "Priya",
+            "title": "AE",
+            "role": "member",
+            "persona": true
+          }
+        ]
+      }
+    },
+    "merchantRoles": {
+      "nia": "Growth PM · Clay",
+      "sam": "Finance lead · Clay"
+    },
+    "population": {
+      "size": 400,
+      "seed": 2117,
+      "cogsPerUnit": 0.021,
+      "unitsPerPrimary": 1.4,
+      "profiles": {
+        "free": {
+          "share": 0.7,
+          "median": 0.75,
+          "spread": 0.75,
+          "secondary": 0.9
+        },
+        "launch": {
+          "share": 0.2,
+          "median": 0.7,
+          "spread": 0.6,
+          "secondary": 0.35,
+          "needs": {
+            "phone": 0.35
+          }
+        },
+        "growth": {
+          "share": 0.1,
+          "median": 0.75,
+          "spread": 0.55,
+          "secondary": 0.3,
+          "needs": {
+            "phone": 0.5,
+            "crm": 0.85
+          }
+        }
+      },
+      "names": [
+        [
+          "Northbeam",
+          "Harbor",
+          "Quill",
+          "Lattice",
+          "Brightline",
+          "Copperleaf",
+          "Summit",
+          "Ridgeway",
+          "Fable",
+          "Orbit",
+          "Kestrel",
+          "Juniper",
+          "Atlas",
+          "Marlow",
+          "Tandem",
+          "Veritas",
+          "Pinecrest",
+          "Lumen",
+          "Halcyon",
+          "Sable"
+        ],
+        [
+          "Recruiting",
+          "Labs",
+          "Growth",
+          "Partners",
+          "Analytics",
+          "Health",
+          "Logistics",
+          "Studio",
+          "Capital",
+          "Robotics",
+          "Security",
+          "Commerce",
+          "Learning",
+          "Energy",
+          "Legal",
+          "Media",
+          "Cloud",
+          "Foods",
+          "Mobility",
+          "Systems"
+        ]
+      ]
+    },
+    "sim": {
+      "workspaces": 2000,
+      "days": 90,
+      "seed": 1608,
+      "enrichments": [
+        {
+          "id": "company",
+          "label": "Company enrichment",
+          "step": "company",
+          "share": 0.34,
+          "rowsMedian": 180,
+          "outcomes": {
+            "found": 0.82,
+            "not-found": 0.18
+          }
+        },
+        {
+          "id": "email-waterfall",
+          "label": "Email waterfall",
+          "step": "email",
+          "share": 0.32,
+          "rowsMedian": 150,
+          "outcomes": {
+            "verified": 0.47,
+            "found": 0.13,
+            "bounced": 0.06,
+            "not-found": 0.34
+          }
+        },
+        {
+          "id": "phone",
+          "label": "Mobile phone",
+          "step": "phone",
+          "share": 0.12,
+          "rowsMedian": 60,
+          "outcomes": {
+            "found": 0.41,
+            "not-found": 0.59
+          }
+        },
+        {
+          "id": "ai-research",
+          "label": "AI research",
+          "step": "navigator",
+          "share": 0.22,
+          "rowsMedian": 80,
+          "outcomes": {
+            "found": 0.74,
+            "not-found": 0.26
+          },
+          "models": [
+            "navigator",
+            "argon",
+            "helium"
+          ],
+          "modelSteps": {
+            "navigator": "navigator",
+            "argon": "argon",
+            "helium": "helium"
+          }
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "found",
+          "label": "Found",
+          "charged": true
+        },
+        {
+          "id": "not-found",
+          "label": "Not found",
+          "charged": false
+        },
+        {
+          "id": "verified",
+          "label": "Verified",
+          "charged": true
+        },
+        {
+          "id": "bounced",
+          "label": "Bounced",
+          "charged": true
+        }
+      ],
+      "behaviours": {
+        "churnAfter3Months": 0.16,
+        "addTopUps": 0.24,
+        "switchModels": 0.18,
+        "stayOnDefault": 0.7,
+        "freeGoQuiet": 0.42,
+        "freeNeverRun": 0.22
+      },
+      "regions": {
+        "us": 0.55,
+        "eu": 0.3,
+        "in": 0.15
+      },
+      "sources": {
+        "organic": 0.38,
+        "paid-search": 0.2,
+        "referral": 0.16,
+        "partner": 0.1,
+        "outbound": 0.16
+      }
+    },
+    "experiments": [
+      {
+        "id": "exp-topups",
+        "name": "Action top-ups at the cap",
+        "hypothesis": "If Free users who hit a cap can buy a small Actions pack, paid conversion within 14 days rises without pulling Launch revenue down.",
+        "cohort": "free-capped",
+        "metric": "Paid within 14 days",
+        "status": "running",
+        "owner": "Nia",
+        "startedDaysAgo": 9,
+        "arms": [
+          {
+            "name": "Control · upgrade wall",
+            "exposed": 1840,
+            "converted": 37
+          },
+          {
+            "name": "Top-up packs at the cap",
+            "exposed": 1812,
+            "converted": 61
+          }
+        ]
+      },
+      {
+        "id": "exp-preview",
+        "name": "Dollar run-cost preview",
+        "hypothesis": "Showing the dollar cost before every run raises top-up purchases on paid plans and cuts bill-shock tickets.",
+        "cohort": "paid-hot",
+        "metric": "Bought a top-up",
+        "status": "done",
+        "owner": "Nia",
+        "startedDaysAgo": 41,
+        "decision": "ship",
+        "arms": [
+          {
+            "name": "Control",
+            "exposed": 920,
+            "converted": 64
+          },
+          {
+            "name": "Run-cost preview",
+            "exposed": 934,
+            "converted": 97
+          }
+        ]
+      },
+      {
+        "id": "exp-bonus",
+        "name": "Rollover bonus as a save offer",
+        "hypothesis": "Offering a 20% Data Credit rollover bonus in the cancel flow keeps under-using paid accounts through the next renewal.",
+        "cohort": "paid-idle",
+        "metric": "Renewed next cycle",
+        "status": "running",
+        "owner": "Sam",
+        "startedDaysAgo": 16,
+        "arms": [
+          {
+            "name": "Control · standard cancel flow",
+            "exposed": 210,
+            "converted": 128
+          },
+          {
+            "name": "+20% rollover bonus",
+            "exposed": 204,
+            "converted": 151
+          }
+        ]
+      },
+      {
+        "id": "exp-solo",
+        "name": "Solo tier at $89",
+        "hypothesis": "A one-builder Solo plan converts Free cap-hitters who will never pay $185 for Launch.",
+        "cohort": "free-capped",
+        "metric": "Paid within 30 days",
+        "status": "draft",
+        "owner": "Nia",
+        "arms": []
+      }
+    ]
+  },
+  "hub": {
+    "spark": {
+      "amount": 5,
+      "meter": "dc",
+      "minRows": 25,
+      "monthlyCap": 50,
+      "expiryDays": 7,
+      "label": "Daily Spark"
+    },
+    "activation": {
+      "amount": 20,
+      "minRows": 25
+    },
+    "starterPack": {
+      "units": 200,
+      "price": 12,
+      "validityDays": 30
+    },
+    "paidTrial": {
+      "planId": "launch",
+      "days": 7
+    },
+    "dunning": {
+      "graceDays": 7,
+      "retryDays": [
+        0,
+        1,
+        3,
+        5,
+        7
+      ],
+      "preExpiryDays": 30
+    },
+    "pausePolicy": "keep",
+    "pauseMaxCycles": 3,
+    "annualDiscountPct": 10,
+    "undoHours": 24,
+    "expansion": {
+      "dc": {
+        "step": 1000,
+        "price": 45,
+        "max": 10
+      },
+      "act": {
+        "step": 10000,
+        "price": 35,
+        "max": 6
+      }
+    },
+    "benchmark": {
+      "costPerVerified": 0.06,
+      "label": "Teams with an email-first mix on Launch and Growth"
+    },
+    "verifiedNoun": {
+      "one": "verified email",
+      "many": "verified emails"
+    },
+    "coupons": [
+      {
+        "code": "BUILD10",
+        "label": "10% off the plan for 3 months",
+        "pctOff": 10,
+        "months": 3
+      }
+    ],
+    "templateTable": "Starter table: 10 B2B SaaS companies with sample rows"
+  }
+}

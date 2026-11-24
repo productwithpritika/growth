@@ -1,0 +1,35 @@
+{
+  "id": "in",
+  "name": "India",
+  "shortName": "India",
+  "currency": { "code": "INR", "locale": "en-IN", "perUsd": 84, "decimals": 0 },
+  "tax": {
+    "name": "GST",
+    "rate": 0.18,
+    "display": "exclusive",
+    "note": "Prices exclude GST. 18% GST is added to each invoice; add a GSTIN in Billing to claim input tax credit.",
+    "idLabel": "GSTIN"
+  },
+  "strongAuth": {
+    "required": true,
+    "method": "otp",
+    "exemptBelow": null,
+    "title": "Verify the payment with a one-time password",
+    "body": "Your bank has sent a one-time password to the phone number linked to the card. Approve the {amount} payment to {company} to continue. No card details or codes are entered here.",
+    "approve": "Verify payment",
+    "cancel": "Cancel payment",
+    "rule": "Additional factor of authentication (RBI) on every card payment. Recurring charges up to ₹15,000 under an e-mandate don't need it."
+  },
+  "recurring": {
+    "consentRequired": true,
+    "title": "Set up an e-mandate for top-ups",
+    "body": "You authorise {company} to charge up to {max} per top-up through a card e-mandate. You'll get a pre-debit notification at least 24 hours before each charge, and any charge above {max} asks for a one-time password. Cancel the mandate at any time in Top-ups.",
+    "checkbox": "I authorise this e-mandate.",
+    "maxPerCharge": 15000,
+    "preDebitNoticeHours": 24
+  },
+  "autoRenewal": {
+    "title": "Your plan renews automatically",
+    "body": "{plan} renews every month on {date} at {price} plus 18% GST through your card e-mandate. We'll send a pre-debit notification 24 hours before each renewal. Cancel any time in Plan."
+  }
+}

@@ -1,0 +1,769 @@
+{
+  "id": "apico",
+  "company": "APICo",
+  "category": "Prepaid AI API platform",
+  "billingModel": "prepaid",
+  "archetype": "prepaid-usage",
+  "workUnit": {
+    "one": "request",
+    "many": "requests"
+  },
+  "brand": {
+    "wordmark": "APICo",
+    "glyph": "A",
+    "accent": {
+      "light": "oklch(0.45 0.12 150)",
+      "dark": "oklch(0.72 0.14 150)",
+      "foregroundLight": "oklch(0.99 0 0)",
+      "foregroundDark": "oklch(0.15 0.01 150)"
+    }
+  },
+  "meters": [
+    {
+      "id": "usd",
+      "label": "Balance",
+      "unit": "USD",
+      "pricePerUnit": 1,
+      "valueType": "currency",
+      "decimals": 2,
+      "hint": "Prepaid balance in US dollars. Every request draws it down at list price."
+    }
+  ],
+  "plans": [
+    {
+      "id": "trial",
+      "name": "Free trial",
+      "price": 0,
+      "paid": false,
+      "included": {
+        "usd": 5
+      },
+      "caps": {
+        "monthlySpend": 5,
+        "depositMin": 0
+      },
+      "features": [],
+      "highlights": [
+        "$5 credit, valid 90 days",
+        "3 requests a minute"
+      ]
+    },
+    {
+      "id": "tier1",
+      "name": "Tier 1",
+      "price": 0,
+      "paid": true,
+      "included": {
+        "usd": 0
+      },
+      "caps": {
+        "monthlySpend": 100,
+        "depositMin": 5
+      },
+      "features": [],
+      "highlights": [
+        "After $5 deposited",
+        "Spend up to $100 a month"
+      ]
+    },
+    {
+      "id": "tier2",
+      "name": "Tier 2",
+      "price": 0,
+      "paid": true,
+      "included": {
+        "usd": 0
+      },
+      "caps": {
+        "monthlySpend": 500,
+        "depositMin": 50
+      },
+      "features": [],
+      "highlights": [
+        "After $50 deposited",
+        "Spend up to $500 a month"
+      ]
+    },
+    {
+      "id": "tier3",
+      "name": "Tier 3",
+      "price": 0,
+      "paid": true,
+      "included": {
+        "usd": 0
+      },
+      "caps": {
+        "monthlySpend": 2000,
+        "depositMin": 250
+      },
+      "features": [
+        "eu"
+      ],
+      "highlights": [
+        "After $250 deposited",
+        "Spend up to $2,000 a month",
+        "EU processing"
+      ]
+    },
+    {
+      "id": "tier4",
+      "name": "Tier 4",
+      "price": 0,
+      "paid": true,
+      "included": {
+        "usd": 0
+      },
+      "caps": {
+        "monthlySpend": 10000,
+        "depositMin": 1000
+      },
+      "features": [
+        "eu"
+      ],
+      "highlights": [
+        "After $1,000 deposited",
+        "Spend up to $10,000 a month"
+      ]
+    },
+    {
+      "id": "commit",
+      "name": "Committed use",
+      "price": 1500,
+      "paid": true,
+      "proposed": true,
+      "included": {
+        "usd": 1650
+      },
+      "meterPrice": {
+        "usd": 1500
+      },
+      "caps": {
+        "monthlySpend": 25000
+      },
+      "features": [
+        "eu"
+      ],
+      "highlights": [
+        "$1,650 of usage for $1,500",
+        "Spend up to $25,000 a month"
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "price": null,
+      "paid": true,
+      "included": {
+        "usd": 0
+      },
+      "caps": {},
+      "features": [
+        "eu"
+      ],
+      "highlights": [
+        "Invoiced",
+        "Custom rate limits"
+      ]
+    }
+  ],
+  "grantRules": [
+    {
+      "plan": "trial",
+      "meter": "usd",
+      "cadence": "monthly",
+      "rollover": {
+        "mode": "none"
+      },
+      "expiryDays": 90
+    },
+    {
+      "plan": "*",
+      "meter": "usd",
+      "cadence": "monthly",
+      "rollover": {
+        "mode": "full"
+      }
+    }
+  ],
+  "topUpPacks": [
+    {
+      "id": "usd-10",
+      "meter": "usd",
+      "units": 10,
+      "price": 10,
+      "validityDays": 365
+    },
+    {
+      "id": "usd-50",
+      "meter": "usd",
+      "units": 50,
+      "price": 50,
+      "validityDays": 365
+    },
+    {
+      "id": "usd-250",
+      "meter": "usd",
+      "units": 250,
+      "price": 250,
+      "validityDays": 365
+    },
+    {
+      "id": "usd-1000",
+      "meter": "usd",
+      "units": 1000,
+      "price": 1000,
+      "validityDays": 365
+    }
+  ],
+  "autoTopUp": {
+    "threshold": 10,
+    "amount": 50,
+    "monthlySpendLimit": 500
+  },
+  "limits": {
+    "spend": {
+      "selfSetCap": true,
+      "tierCaps": true
+    },
+    "rate": {
+      "runsPerMinute": 500,
+      "agentRunsPerHour": 200
+    }
+  },
+  "byokDiscount": null,
+  "expansion": "independent",
+  "rewards": [
+    {
+      "id": "verify",
+      "label": "Verify your organisation",
+      "amount": 5,
+      "meter": "usd",
+      "expiryDays": 90
+    }
+  ],
+  "models": [
+    {
+      "id": "large",
+      "name": "apico-large",
+      "provider": "APICo",
+      "providerCostPerRun": 0.007,
+      "default": true
+    },
+    {
+      "id": "small",
+      "name": "apico-small",
+      "provider": "APICo",
+      "providerCostPerRun": 0.0011,
+      "default": false
+    },
+    {
+      "id": "vision",
+      "name": "apico-vision",
+      "provider": "APICo",
+      "providerCostPerRun": 0.025,
+      "default": false
+    }
+  ],
+  "regions": [
+    {
+      "id": "us",
+      "name": "United States",
+      "residency": "US processing"
+    },
+    {
+      "id": "eu",
+      "name": "European Union",
+      "residency": "EU processing from Tier 3"
+    },
+    {
+      "id": "jp",
+      "name": "Japan",
+      "residency": "Japan processing on Enterprise"
+    }
+  ],
+  "compliance": {
+    "SOC 2 Type II": true,
+    "GDPR": true,
+    "HIPAA (with BAA)": true,
+    "Zero data retention": true
+  },
+  "copy": {
+    "hub.title": "Billing and usage",
+    "limits.topUpCap": "Monthly spend cap (USD)",
+    "topups.title": "Add funds",
+    "tables.rowLabel": "Ticket",
+    "tables.addColumn": "Add a model call"
+  },
+  "rateCard": [
+    {
+      "id": "large-chat",
+      "label": "Chat · apico-large",
+      "costs": {
+        "usd": 0.012
+      },
+      "providerCost": 0.007,
+      "model": "large"
+    },
+    {
+      "id": "small-chat",
+      "label": "Chat · apico-small",
+      "costs": {
+        "usd": 0.002
+      },
+      "providerCost": 0.0011,
+      "model": "small"
+    },
+    {
+      "id": "embed",
+      "label": "Embeddings batch",
+      "costs": {
+        "usd": 0.0004
+      },
+      "providerCost": 0.0002
+    },
+    {
+      "id": "image",
+      "label": "Image · apico-vision",
+      "costs": {
+        "usd": 0.04
+      },
+      "providerCost": 0.025,
+      "model": "vision"
+    }
+  ],
+  "actionCost": 0,
+  "saves": [
+    {
+      "id": "dunning",
+      "label": "Smart Dunning retry",
+      "detail": "Retry the reload and send a one-tap card update link"
+    },
+    {
+      "id": "bonus",
+      "label": "Deposit bonus",
+      "detail": "Add 10% to the next deposit"
+    },
+    {
+      "id": "downgrade",
+      "label": "Lower the spend cap",
+      "detail": "Match the cap to the last 30 days of spend"
+    }
+  ],
+  "rules": {
+    "hotPct": 80,
+    "idlePct": 30,
+    "byokHeavyPct": 50,
+    "mcpHeavyPct": 50,
+    "usageDropPct": 50,
+    "alertPcts": [
+      50,
+      80,
+      100
+    ],
+    "expiringSoonDays": 14
+  },
+  "agents": {
+    "mcpOnFree": true,
+    "seatCap": 50,
+    "approvalOver": 20,
+    "premiumDataInAgents": true,
+    "byokFee": 0
+  },
+  "demo": {
+    "hub": {
+      "maya": {
+        "planId": "trial",
+        "role": "Indie developer",
+        "blurb": "Ships a side-project chatbot",
+        "seats": 1,
+        "carryIn": {},
+        "expiredAtStart": {},
+        "card": {
+          "brand": "Visa",
+          "last4": "3318",
+          "expires": "08/28",
+          "status": "ok"
+        },
+        "autoTopUp": {
+          "enabled": false,
+          "meter": "usd",
+          "threshold": 2,
+          "units": 10
+        },
+        "topUpCap": 20,
+        "workflows": [
+          {
+            "id": "chatbot",
+            "name": "Chatbot traffic",
+            "owner": "Maya",
+            "every": "day",
+            "units": 120,
+            "steps": [
+              "small-chat"
+            ],
+            "channel": "Table"
+          },
+          {
+            "id": "evals",
+            "name": "Weekly eval run",
+            "owner": "Maya",
+            "every": "week",
+            "offset": 1,
+            "units": 60,
+            "steps": [
+              "large-chat"
+            ],
+            "channel": "Table"
+          }
+        ],
+        "table": {
+          "name": "Prototype eval set",
+          "rows": 300,
+          "source": "Notebook"
+        },
+        "domain": "mayaml.dev"
+      },
+      "dev": {
+        "planId": "tier3",
+        "role": "Platform lead",
+        "blurb": "Runs production traffic for six engineers",
+        "seats": 6,
+        "carryIn": {
+          "usd": 830
+        },
+        "expiredAtStart": {},
+        "card": {
+          "brand": "Amex",
+          "last4": "1009",
+          "expires": "10/26",
+          "status": "expired"
+        },
+        "autoTopUp": {
+          "enabled": true,
+          "meter": "usd",
+          "threshold": 50,
+          "units": 250
+        },
+        "topUpCap": 1200,
+        "inFlight": "agent-triage",
+        "workflows": [
+          {
+            "id": "support",
+            "name": "Support assistant",
+            "owner": "Support squad",
+            "every": "day",
+            "units": 2400,
+            "steps": [
+              "large-chat"
+            ],
+            "channel": "Table"
+          },
+          {
+            "id": "embeds",
+            "name": "Nightly re-embedding",
+            "owner": "Search team",
+            "every": "day",
+            "units": 9000,
+            "steps": [
+              "embed"
+            ],
+            "channel": "Table"
+          },
+          {
+            "id": "agent-triage",
+            "name": "Ticket triage agent",
+            "owner": "Support squad",
+            "every": "weekday",
+            "units": 300,
+            "steps": [
+              "small-chat",
+              "large-chat"
+            ],
+            "channel": "Agent"
+          },
+          {
+            "id": "ide",
+            "name": "Calls from the IDE (MCP)",
+            "owner": "Whole team",
+            "every": "weekday",
+            "units": 200,
+            "steps": [
+              "small-chat"
+            ],
+            "channel": "MCP"
+          }
+        ],
+        "team": [
+          {
+            "id": "dev",
+            "name": "Dev",
+            "title": "Platform lead",
+            "role": "admin"
+          },
+          {
+            "id": "rahul",
+            "name": "Rahul",
+            "title": "Finance",
+            "role": "billing"
+          },
+          {
+            "id": "mei",
+            "name": "Mei",
+            "title": "Support engineer",
+            "role": "member",
+            "persona": true
+          }
+        ],
+        "table": {
+          "name": "Support ticket backlog",
+          "rows": 4200,
+          "source": "Batch API"
+        },
+        "domain": "harborlabs.ai"
+      }
+    },
+    "merchantRoles": {
+      "nia": "Growth PM · APICo",
+      "sam": "Finance lead · APICo"
+    },
+    "population": {
+      "size": 260,
+      "seed": 777,
+      "cogsPerUnit": 0.56,
+      "unitsPerPrimary": 140,
+      "profiles": {
+        "trial": {
+          "share": 0.45,
+          "median": 1.1,
+          "spread": 0.8,
+          "base": 5
+        },
+        "tier1": {
+          "share": 0.3,
+          "median": 1,
+          "spread": 0.7,
+          "base": 40
+        },
+        "tier2": {
+          "share": 0.15,
+          "median": 1,
+          "spread": 0.6,
+          "base": 250
+        },
+        "tier3": {
+          "share": 0.07,
+          "median": 1,
+          "spread": 0.5,
+          "base": 900,
+          "needs": {
+            "eu": 0.3
+          }
+        },
+        "tier4": {
+          "share": 0.03,
+          "median": 1,
+          "spread": 0.5,
+          "base": 4000
+        }
+      },
+      "names": [
+        [
+          "Quanta",
+          "Relay",
+          "Vector",
+          "Echo",
+          "Signal",
+          "Parallax",
+          "Cipher",
+          "Helix",
+          "Lambda",
+          "Nova",
+          "Polar",
+          "Radiant",
+          "Synapse"
+        ],
+        [
+          "AI",
+          "Bots",
+          "Labs",
+          "Analytics",
+          "Health",
+          "Legal",
+          "Support",
+          "Search",
+          "Insights",
+          "Robotics",
+          "Voice",
+          "Docs",
+          "Mail",
+          "Agents",
+          "Code",
+          "Data",
+          "Learning",
+          "Retail",
+          "Travel",
+          "Finance"
+        ]
+      ]
+    },
+    "sim": {
+      "workspaces": 2000,
+      "days": 90,
+      "seed": 777,
+      "enrichments": [
+        {
+          "id": "chat",
+          "label": "Chat completions",
+          "step": "large-chat",
+          "share": 0.62,
+          "rowsMedian": 1800,
+          "outcomes": {
+            "success": 0.965,
+            "error": 0.02,
+            "rate-limited": 0.015
+          },
+          "models": [
+            "large",
+            "small"
+          ],
+          "modelSteps": {
+            "large": "large-chat",
+            "small": "small-chat"
+          }
+        },
+        {
+          "id": "embeddings",
+          "label": "Embeddings",
+          "step": "embed",
+          "share": 0.25,
+          "rowsMedian": 12000,
+          "outcomes": {
+            "success": 0.99,
+            "error": 0.01
+          }
+        },
+        {
+          "id": "vision",
+          "label": "Vision",
+          "step": "image",
+          "share": 0.13,
+          "rowsMedian": 120,
+          "outcomes": {
+            "success": 0.95,
+            "error": 0.03,
+            "rate-limited": 0.02
+          },
+          "models": [
+            "vision"
+          ]
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "success",
+          "label": "Success",
+          "charged": true
+        },
+        {
+          "id": "error",
+          "label": "Error",
+          "charged": false
+        },
+        {
+          "id": "rate-limited",
+          "label": "Rate-limited",
+          "charged": false
+        }
+      ],
+      "behaviours": {
+        "churnAfter3Months": 0.12,
+        "addTopUps": 0.6,
+        "switchModels": 0.28,
+        "stayOnDefault": 0.6,
+        "freeGoQuiet": 0.55,
+        "freeNeverRun": 0.3
+      },
+      "regions": {
+        "us": 0.52,
+        "eu": 0.28,
+        "in": 0.2
+      },
+      "sources": {
+        "organic": 0.46,
+        "paid-search": 0.12,
+        "referral": 0.1,
+        "partner": 0.08,
+        "outbound": 0.24
+      }
+    },
+    "experiments": [
+      {
+        "id": "exp-autoreload",
+        "name": "Auto-reload on by default",
+        "hypothesis": "Turning auto-reload on at the first deposit keeps more accounts spending through month two.",
+        "cohort": "paid-hot",
+        "metric": "Kept spending 30 days",
+        "status": "running",
+        "owner": "Nia",
+        "startedDaysAgo": 12,
+        "arms": [
+          {
+            "name": "Control · opt-in reload",
+            "exposed": 540,
+            "converted": 351
+          },
+          {
+            "name": "Reload on by default",
+            "exposed": 552,
+            "converted": 404
+          }
+        ]
+      },
+      {
+        "id": "exp-commit",
+        "name": "Committed use at $1,500",
+        "hypothesis": "A $1,500 commitment that buys $1,650 of usage moves Tier 3 accounts up without hurting margin.",
+        "cohort": "paid-hot",
+        "metric": "Upgraded a plan",
+        "status": "draft",
+        "owner": "Sam",
+        "arms": []
+      }
+    ]
+  },
+  "hub": {
+    "thresholds": [
+      50,
+      80,
+      100
+    ],
+    "spark": {
+      "amount": 1,
+      "minRows": 100,
+      "monthlyCap": 0,
+      "expiryDays": 7,
+      "label": "Daily bonus"
+    },
+    "activation": {
+      "amount": 5,
+      "minRows": 100
+    },
+    "starterPack": null,
+    "paidTrial": null,
+    "dunning": {
+      "graceDays": 3,
+      "retryDays": [
+        0,
+        1,
+        3
+      ],
+      "preExpiryDays": 30
+    },
+    "pausePolicy": "freeze",
+    "annualDiscountPct": 0,
+    "expansion": {},
+    "benchmark": null,
+    "coupons": [],
+    "templateTable": "Quickstart notebook with three sample calls"
+  }
+}
